@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "composio": {
+      "command": "npx",
+      "args": ["-y", "@composio/mcp@latest"],
+      "env": {
+        "COMPOSIO_API_KEY": "${COMPOSIO_API_KEY}",
+        "COMPOSIO_TOOLKITS": "SUPABASE,VERCEL,GITHUB,TAVILY,COMPOSIO_SEARCH"
+      }
+    }
+  }
+}
