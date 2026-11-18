@@ -43,7 +43,7 @@ create table if not exists rounds (
   id uuid primary key default gen_random_uuid(),
   room_id uuid references rooms(id) on delete cascade,
   round_number int,
-  meme_id uuid references memes(id),
+  meme_id uuid references memes(id) on delete set null,
   phase varchar default 'writing',  -- writing, voting, results
   ends_at timestamptz,
   voting_index int default 0,       -- which submission is being voted right now
