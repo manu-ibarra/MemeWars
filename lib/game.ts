@@ -190,12 +190,12 @@ export async function finishVoting(round: Round) {
   const ids = (subs || []).map((s: any) => s.id);
   if (!ids.length) return;
   const { data: votes } = await supabase.from('votes').select('*').in('submission_id', ids);
-  for (const s of subs as Submission[]) {
+  await Promise.all((subs as Submission[]).map(async (s) => {
     const pts = pointsFor(s.id, (votes as Vote[]) || []);
-    if (!pts) continue;
+    if (!pts) return;
     const { data: p } = await supabase.from('players').select('score').eq('id', s.player_id).maybeSingle();
     if (p) await supabase.from('players').update({ score: (p.score || 0) + pts }).eq('id', s.player_id);
-  }
+  }));
 }
 
 export async function playAgain(room: Room) {
