@@ -3,7 +3,7 @@ import { Player } from '@/types';
 export function Avatar({ p, size = 48 }: { p: Pick<Player, 'nickname' | 'avatar_color' | 'avatar_emoji'>; size?: number }) {
   return (
     <div
-      className="relative shrink-0 rounded-full border-[3px] border-black flex items-center justify-center font-display text-black"
+      className="relative shrink-0 rounded-full border border-black flex items-center justify-center font-display text-black"
       style={{ width: size, height: size, background: p.avatar_color || '#FFE600', fontSize: size * 0.4 }}
     >
       {p.nickname.slice(0, 2).toUpperCase()}

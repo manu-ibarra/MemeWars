@@ -6,7 +6,7 @@ export default function Leaderboard({ players, meId, gains }: { players: Player[
   return (
     <ol className="space-y-2">
       {sorted.map((p, i) => (
-        <li key={p.id} className={`card flex items-center gap-3 !p-3 ${i === 0 ? '!border-brand shadow-hardsm' : ''} ${p.id === meId ? 'bg-[#242000]' : ''}`}>
+        <li key={p.id} className={`card flex items-center gap-3 !p-3 ${i === 0 ? '!border-brand' : ''} ${p.id === meId ? 'bg-[#242000]' : ''}`}>
           <div className="w-8 text-center font-display text-xl">{i === 0 ? '👑' : i + 1}</div>
           <Avatar p={p} size={40} />
           <div className="flex-1 min-w-0 font-extrabold truncate">{p.nickname}</div>

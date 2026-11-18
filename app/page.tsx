@@ -1,16 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Logo from '@/components/Logo';
 import ConfigBanner from '@/components/ConfigBanner';
 import { createRoom } from '@/lib/game';
 import { getNick, setNick, setPlayerId } from '@/lib/session';
 
-const FLOATERS = ['😂', '🔥', '💀', '🤡', '😎', '👑', '🐸', '🤯'];
 const STEPS = [
-  { n: '1', t: 'Te llega un clip', d: 'Todos ven el mismo meme al mismo tiempo.' },
-  { n: '2', t: 'Le ponés texto zarpado', d: 'Arrastrá, cambiá fuente y color. A pura creatividad.' },
-  { n: '3', t: 'Votan y gana el más gracioso', d: 'Votos anónimos. El que suma más es el Rey del Meme.' },
+  { n: '01', t: 'Llega un clip', d: 'Todos ven el mismo meme al mismo tiempo.' },
+  { n: '02', t: 'Le ponés texto', d: 'Arrastrá, cambiá fuente y color.' },
+  { n: '03', t: 'Votan', d: 'Votos anónimos. Gana el más gracioso.' },
 ];
 
 export default function Landing() {
@@ -41,37 +41,39 @@ export default function Landing() {
   return (
     <>
       <ConfigBanner />
-      <div className="relative overflow-hidden">
-        {FLOATERS.map((e, i) => (
-          <span key={i} aria-hidden className="absolute text-4xl opacity-30 animate-floaty pointer-events-none"
-            style={{ left: `${(i * 13 + 5) % 92}%`, top: `${(i * 23) % 70 + 3}%`, animationDelay: `${i * 0.6}s`, ['--r' as any]: `${i * 8}deg` }}>{e}</span>
-        ))}
-        <main className="relative max-w-3xl mx-auto px-4 py-10 flex flex-col items-center gap-8">
-          <div className="animate-bounce-in" style={{ transform: 'rotate(-2deg)' }}>
-            <Logo width={560} glow />
+      <main className="min-h-[100dvh] flex flex-col items-center justify-center px-6 py-16 text-center">
+        <div className="w-full max-w-sm flex flex-col items-center gap-10">
+          <div className="animate-bounce-in flex flex-col items-center gap-5">
+            <Logo width={420} glow />
+            <p className="eyebrow">El juego donde el meme más zarpado gana</p>
           </div>
-          <p className="font-display text-brand text-center text-xl sm:text-2xl">EL JUEGO DONDE EL MEME MÁS ZARPADO GANA</p>
-          <div className="w-full max-w-md space-y-3">
-            <input className="input text-center text-lg" maxLength={20} placeholder="Tu apodo" aria-label="Tu apodo" value={nick} onChange={(e) => setN(e.target.value)} />
-            {err && <p className="text-red-400 font-bold text-center">{err}</p>}
-            <button className="btn w-full !text-2xl !py-5 !shadow-[4px_4px_0_#fff]" disabled={busy} onClick={create}>{busy ? 'CREANDO...' : 'CREAR SALA'}</button>
-            <button className="btn btn-outline w-full !text-xl" onClick={join}>UNIRSE CON CÓDIGO</button>
+
+          <div className="w-full space-y-3 animate-slide-up" style={{ animationDelay: '200ms' }}>
+            <input className="input text-center" maxLength={20} placeholder="Tu apodo" aria-label="Tu apodo" value={nick} onChange={(e) => setN(e.target.value)} />
+            {err && <p className="text-red-400 text-sm">{err}</p>}
+            <button className="btn w-full" disabled={busy} onClick={create}>{busy ? 'Creando...' : 'Crear sala'}</button>
+            <button className="btn btn-outline w-full" onClick={join}>Unirse con código</button>
+            <Link href="/admin" className="btn btn-ghost w-full" aria-label="Agregar clips al juego">
+              <span className="text-brand text-base leading-none">+</span> Agregar clips
+            </Link>
           </div>
-          <section className="w-full space-y-3">
-            <h2 className="font-display text-2xl text-center">CÓMO SE JUEGA</h2>
-            <div className="grid sm:grid-cols-3 gap-3">
-              {STEPS.map((s) => (
-                <div key={s.n} className="card-y text-center">
-                  <div className="font-display text-4xl text-brand">{s.n}</div>
-                  <div className="font-extrabold">{s.t}</div>
-                  <p className="text-sm text-neutral-400 mt-1">{s.d}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-          <footer className="text-neutral-500 text-sm text-center pb-6">Hecho por amigos, para amigos - MEME WARS</footer>
-        </main>
-      </div>
+        </div>
+
+        <section className="w-full max-w-2xl mt-24 animate-slide-up" style={{ animationDelay: '400ms' }}>
+          <h2 className="eyebrow mb-8">Cómo se juega</h2>
+          <div className="grid sm:grid-cols-3 gap-y-8 sm:gap-x-8 sm:divide-x divide-white/10">
+            {STEPS.map((s) => (
+              <div key={s.n} className="sm:px-4">
+                <div className="text-brand text-sm font-medium tabular-nums">{s.n}</div>
+                <div className="font-display text-lg mt-2">{s.t}</div>
+                <p className="text-sm text-white/45 mt-1">{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer className="mt-24 eyebrow !text-white/25 !tracking-[0.15em]">Hecho por amigos, para amigos</footer>
+      </main>
     </>
   );
 }

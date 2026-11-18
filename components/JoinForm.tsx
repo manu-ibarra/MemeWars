@@ -34,7 +34,7 @@ export default function JoinForm({ initialCode = '', lockCode = false, onJoined 
           onChange={(e) => setCode(e.target.value)} onBlur={() => code && setCode(normalizeCode(code))} />
       )}
       {err && <p className="text-red-400 font-bold text-center">{err}</p>}
-      <button className="btn w-full !text-xl" disabled={busy} onClick={go}>{busy ? 'ENTRANDO...' : 'DALE, ENTRAR'}</button>
+      <button className="btn w-full !text-base" disabled={busy} onClick={go}>{busy ? 'ENTRANDO...' : 'DALE, ENTRAR'}</button>
     </div>
   );
 }

@@ -49,7 +49,7 @@ export default function ResultsPhase({ room, round, meme, me, players, submissio
       {me.is_host ? (
         <>
           {err && <p className="text-red-400 font-bold">{err}</p>}
-          <button className="btn w-full !text-2xl !py-5" disabled={busy} onClick={next}>{last ? 'VER PODIO 🏆' : 'SIGUIENTE RONDA'}</button>
+          <button className="btn w-full !text-base !py-4" disabled={busy} onClick={next}>{last ? 'VER PODIO 🏆' : 'SIGUIENTE RONDA'}</button>
         </>
       ) : <p className="text-center text-neutral-400 font-bold">Esperando al host...</p>}
     </main>

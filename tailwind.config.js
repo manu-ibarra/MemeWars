@@ -11,7 +11,7 @@ module.exports = {
         line: '#2A2A2A',
       },
       fontFamily: {
-        display: ['Bungee', 'Luckiest Guy', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {

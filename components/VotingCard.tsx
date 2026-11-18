@@ -31,7 +31,7 @@ export default function VotingCard({ meme, submission, isMine, myVote, voteCount
             <button
               key={o.p} disabled={myVote !== null}
               onClick={() => { playSound('vote'); onVote(o.p); }}
-              className={`btn !text-lg ${o.cls} ${myVote === o.p ? 'ring-4 ring-white' : ''}`}
+              className={`btn !text-base ${o.cls} ${myVote === o.p ? 'ring-4 ring-white' : ''}`}
               aria-label={o.label}
             >{o.label}</button>
           ))}

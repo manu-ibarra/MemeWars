@@ -16,13 +16,13 @@ export default function TimerBar({ remainingMs, totalSec }: { remainingMs: numbe
   }, [secs, danger]);
   return (
     <div className="w-full" role="timer" aria-label={`${secs} segundos`}>
-      <div className="h-5 rounded-full border-[3px] border-line bg-ink overflow-hidden">
+      <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
         <div
           className={`h-full transition-[width] duration-200 ease-linear ${danger ? 'bg-red-500' : 'bg-brand'}`}
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className={`text-right font-display text-lg mt-1 ${danger ? 'text-red-500' : 'text-brand'}`}>{secs}s</div>
+      <div className={`text-right font-display text-sm tabular-nums mt-2 ${danger ? 'text-red-500' : 'text-brand'}`}>{secs}s</div>
     </div>
   );
 }

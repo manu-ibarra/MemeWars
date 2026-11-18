@@ -50,7 +50,7 @@ export default function WritingPhase({ round, meme, me, players, submissions, to
       {submitted ? (
         <div className="card-y text-center font-display text-xl">¡ENVIADO! ✅<div className="text-sm font-sans font-bold text-neutral-400 mt-1">Esperando al resto...</div></div>
       ) : (
-        <button className="btn w-full !text-2xl !py-5 sticky bottom-3" disabled={sending} onClick={send}>{sending ? 'ENVIANDO...' : 'ENVIAR MEME'}</button>
+        <button className="btn w-full !text-base !py-4 sticky bottom-3" disabled={sending} onClick={send}>{sending ? 'ENVIANDO...' : 'ENVIAR MEME'}</button>
       )}
     </main>
   );

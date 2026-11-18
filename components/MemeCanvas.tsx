@@ -42,7 +42,7 @@ export default function MemeCanvas({ meme, layers, renderedUrl, className = '' }
 }) {
   const { ref, w } = useWidth();
   return (
-    <div ref={ref} className={`relative aspect-video w-full overflow-hidden rounded-2xl border-[3px] border-brand bg-black ${className}`}>
+    <div ref={ref} className={`relative aspect-video w-full overflow-hidden rounded-3xl border border-white/10 bg-black ${className}`}>
       {renderedUrl ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={renderedUrl} alt="Meme enviado" className="absolute inset-0 w-full h-full object-cover" draggable={false} />

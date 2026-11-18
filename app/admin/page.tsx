@@ -147,14 +147,14 @@ export default function Admin() {
         <Link href="/"><Logo width={110} /></Link>
         <h1 className="font-display text-xl sm:text-3xl text-brand text-right">MI BIBLIOTECA DE MEMES</h1>
       </header>
-      {toast && <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-brand text-black font-extrabold px-5 py-3 rounded-2xl border-[3px] border-black shadow-[4px_4px_0_#fff]">{toast}</div>}
+      {toast && <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-brand text-black font-extrabold px-5 py-3 rounded-2xl border border-black">{toast}</div>}
 
       <section className="card-y space-y-3">
         <div
           onClick={() => inp.current?.click()}
           onDragOver={(e) => { e.preventDefault(); setDrag(true); }} onDragLeave={() => setDrag(false)}
           onDrop={(e) => { e.preventDefault(); setDrag(false); pick(e.dataTransfer.files[0]); }}
-          className={`rounded-2xl border-[3px] border-dashed border-brand p-6 text-center cursor-pointer font-bold ${drag ? 'bg-[#2a2500]' : ''}`}
+          className={`rounded-2xl border border-dashed border-brand p-6 text-center cursor-pointer font-bold ${drag ? 'bg-[#2a2500]' : ''}`}
         >
           {preview ? (
             OK_TYPES[file!.type] === 'video'
@@ -175,7 +175,7 @@ export default function Admin() {
                 <button key={k} onClick={() => setPreset(k)} className={`chip ${preset === k ? 'chip-on' : ''}`}>{t}</button>
               ))}
             </div>
-            {progress > 0 && <div className="h-4 rounded-full bg-ink border-[3px] border-line overflow-hidden"><div className="h-full bg-brand transition-all" style={{ width: `${progress}%` }} /></div>}
+            {progress > 0 && <div className="h-4 rounded-full bg-ink border border-line overflow-hidden"><div className="h-full bg-brand transition-all" style={{ width: `${progress}%` }} /></div>}
             <button className="btn w-full" disabled={busy} onClick={upload}>{busy ? 'SUBIENDO...' : 'SUBIR CLIP'}</button>
           </>
         )}

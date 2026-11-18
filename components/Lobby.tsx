@@ -48,7 +48,7 @@ export default function Lobby({ room, players, me, presentIds }: { room: Room; p
       <header className="flex items-center justify-between gap-3 flex-wrap">
         <Logo width={110} />
         <div className="flex items-center gap-2">
-          <div className="bg-brand text-black font-display text-xl rounded-full border-[3px] border-black px-4 py-2 shadow-[3px_3px_0_#fff]" aria-label="Código de sala">{room.code}</div>
+          <div className="bg-brand text-black font-display text-lg tracking-widest rounded-full px-5 py-2.5" aria-label="Código de sala">{room.code}</div>
           <button onClick={copy} className="btn btn-sm" aria-label="Copiar link">{copied ? '✅ COPIADO' : '📋 COPIAR'}</button>
         </div>
       </header>
@@ -67,7 +67,7 @@ export default function Lobby({ room, players, me, presentIds }: { room: Room; p
           <Seg label="TIEMPO POR RONDA" value={s.timePerRound} opts={[45, 60, 90].map((v) => ({ v, t: `${v}s` }))} onPick={(v) => updateSettings(room, { timePerRound: v })} />
           <Seg label="CLIPS" value={s.clipSource} opts={[{ v: 'host_only', t: 'Solo mis clips' }, { v: 'all', t: 'Todos los clips activos' }]} onPick={(v) => updateSettings(room, { clipSource: v })} />
           {err && <p className="text-red-400 font-bold">{err}</p>}
-          <button className="btn w-full !text-2xl !py-5" disabled={players.length < 2 || busy} onClick={start}>
+          <button className="btn w-full !text-base !py-4" disabled={players.length < 2 || busy} onClick={start}>
             {busy ? 'ARRANCANDO...' : 'EMPEZAR PARTIDA'}
           </button>
           {players.length < 2 && <p className="text-center text-sm text-neutral-400">Hacen falta al menos 2 jugadores</p>}
@@ -75,7 +75,7 @@ export default function Lobby({ room, players, me, presentIds }: { room: Room; p
       ) : (
         <div className="card-y space-y-3 text-center">
           <p className="font-bold">{s.rounds} rondas · {s.timePerRound}s · el host arranca cuando estén todos</p>
-          <button className="btn w-full !text-xl" onClick={() => toggleReady(me)}>{me.is_ready ? '✅ LISTO (tocá para cancelar)' : 'ESTOY LISTO'}</button>
+          <button className="btn w-full !text-base" onClick={() => toggleReady(me)}>{me.is_ready ? '✅ LISTO (tocá para cancelar)' : 'ESTOY LISTO'}</button>
         </div>
       )}
     </main>

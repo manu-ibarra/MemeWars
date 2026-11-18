@@ -86,7 +86,7 @@ export default function MemeEditor({ meme, layers, onChange, disabled }: Props) 
     <div className="space-y-3">
       <div
         ref={ref}
-        className="relative aspect-video w-full overflow-hidden rounded-2xl border-[3px] border-brand bg-black touch-none"
+        className="relative aspect-video w-full overflow-hidden rounded-3xl border border-white/10 bg-black touch-none"
         onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
         onPointerDown={() => !disabled && setEditing(null)}
       >
@@ -159,7 +159,7 @@ export default function MemeEditor({ meme, layers, onChange, disabled }: Props) 
             <span className="text-xs font-bold text-neutral-400">COLOR</span>
             {COLORS.map((c) => (
               <button key={c} aria-label={`Color ${c}`} onClick={() => patch(sel.id, { color: c, strokeColor: c === '#000000' ? '#FFFFFF' : '#000000' })}
-                className={`w-11 h-11 rounded-full border-[3px] ${sel.color === c ? 'border-brand scale-110' : 'border-line'}`} style={{ background: c }} />
+                className={`w-11 h-11 rounded-full border ${sel.color === c ? 'border-brand scale-110' : 'border-line'}`} style={{ background: c }} />
             ))}
           </div>
 

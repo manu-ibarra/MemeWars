@@ -33,7 +33,7 @@ export default function FinalPodium({ room, players, me }: { room: Room; players
             {i === 1 && <div className="font-display text-brand text-sm">👑 REY DEL MEME</div>}
             <Avatar p={p} size={i === 1 ? 72 : 56} />
             <div className="font-extrabold truncate max-w-full">{p.nickname}</div>
-            <div className={`w-full ${heights[i]} bg-brand text-black border-[3px] border-black rounded-t-2xl flex flex-col items-center justify-center font-display`}>
+            <div className={`w-full ${heights[i]} bg-brand text-black border border-black rounded-t-2xl flex flex-col items-center justify-center font-display`}>
               <span className="text-3xl">{medals[i]}</span><span>{p.score} pts</span>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function FinalPodium({ room, players, me }: { room: Room; players
       </div>
       <Leaderboard players={players} meId={me.id} />
       <div className="grid gap-3">
-        {me.is_host && <button className="btn !text-xl" onClick={() => playAgain(room)}>JUGAR DE NUEVO</button>}
+        {me.is_host && <button className="btn !text-base" onClick={() => playAgain(room)}>JUGAR DE NUEVO</button>}
         <button className="btn btn-outline" onClick={() => { clearPlayerId(room.code); router.push('/'); }}>VOLVER AL INICIO</button>
         {!me.is_host && <p className="text-center text-sm text-neutral-400">El host puede arrancar otra partida en la misma sala</p>}
       </div>
